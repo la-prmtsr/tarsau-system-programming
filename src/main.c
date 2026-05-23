@@ -34,6 +34,13 @@ int main(int argc, char *argv[])
                 }
             }
 
+            if(fileCount >= MAX_FILES)
+            {
+                printf("En fazla 32 dosya arsivlenebilir!\n");
+                return 1;
+            }
+
+
             files[fileCount++] = argv[i];
         }
 

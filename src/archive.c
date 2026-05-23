@@ -1,4 +1,5 @@
 #include "../include/tarsau.h"
+#include <ctype.h>
 
 void createArchive(int fileCount, char *files[], char *outputName)
 {
@@ -16,6 +17,8 @@ void createArchive(int fileCount, char *files[], char *outputName)
 
     long fileSize;
 
+    long totalSize = 0;
+
     struct stat fileStat;
 
     archive = fopen(outputName, "w");
@@ -32,6 +35,24 @@ void createArchive(int fileCount, char *files[], char *outputName)
     {
         inputFile = fopen(files[i], "r");
 
+        int ch;
+
+        while((ch = fgetc(inputFile)) != EOF)
+        {
+            if(!isprint(ch) && !isspace(ch))
+            {
+                printf("%s giris dosyasinin formati uyumsuzdur!\n",
+                    files[i]);
+
+                fclose(inputFile);
+                fclose(archive);
+
+                return;
+            }
+        }
+
+        rewind(inputFile);
+
         if(inputFile == NULL)
         {
             printf("%s dosyasi acilamadi!\n", files[i]);
@@ -44,6 +65,18 @@ void createArchive(int fileCount, char *files[], char *outputName)
         fseek(inputFile, 0, SEEK_END);
 
         fileSize = ftell(inputFile);
+
+        totalSize += fileSize;
+
+        if(totalSize > MAX_TOTAL_SIZE)
+        {
+            printf("Toplam dosya boyutu 200 MB'i geciyor!\n");
+
+            fclose(inputFile);
+            fclose(archive);
+
+            return;
+        }
 
         rewind(inputFile);
 
