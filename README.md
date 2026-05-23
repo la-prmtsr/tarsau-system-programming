@@ -96,8 +96,8 @@ Dizin adı verilmezse arşiv geçerli dizine açılır.
 ## Örnek Test
 
 ```bash
-echo "Merhaba" > testfiles/t1.txt
-echo "Dunya" > testfiles/t2.txt
+echo "System Programming" > testfiles/t1.txt
+echo "Tarsau Archive Test" > testfiles/t2.txt
 
 ./tarsau -b testfiles/t1.txt testfiles/t2.txt -o s1.sau
 ./tarsau -a s1.sau output
@@ -109,8 +109,8 @@ cat output/t2.txt
 Beklenen çıktı:
 
 ```text
-Merhaba
-Dunya
+System Programming
+Tarsau Archive Test
 ```
 
 ---
