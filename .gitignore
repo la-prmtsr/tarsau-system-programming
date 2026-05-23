@@ -1,0 +1,16 @@
+# Compiled executable
+tarsau
+
+# Archive files
+*.sau
+
+# Test output folders
+output/
+output2/
+output_valgrind/
+folder_tes/
+manyfiles/
+
+# Temporary files
+*.bin
+*.o
