@@ -80,7 +80,7 @@ void createArchive(int fileCount, char *files[], char *outputName)
 
         rewind(inputFile);
 
-        sprintf(temp, "|%s,%o,%ld|",
+        sprintf(temp, "%s,%o,%ld|",
                 files[i],
                 fileStat.st_mode & 0777,
                 fileSize);

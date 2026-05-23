@@ -2,6 +2,12 @@
 
 void extractArchive(char *archiveName, char *directoryName)
 {
+    if(!hasSauExtension(archiveName))
+    {
+        printf("Arsiv dosyasi uygunsuz veya bozuk!\n");
+        return;
+    }
+
     FILE *archive;
 
     FILE *outputFile;
@@ -30,7 +36,7 @@ void extractArchive(char *archiveName, char *directoryName)
 
     if(archive == NULL)
     {
-        printf("Arsiv dosyasi acilamadi!\n");
+        printf("Arsiv dosyasi uygunsuz veya bozuk!\n");
         return;
     }
 

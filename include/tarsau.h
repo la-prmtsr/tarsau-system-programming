@@ -10,6 +10,7 @@
 #define MAX_FILES 32
 #define MAX_TOTAL_SIZE 209715200 // 200 MB
 
+int hasSauExtension(char *fileName);
 void createArchive(int fileCount, char *files[], char *outputName);
 void extractArchive(char *archiveName, char *directoryName);
 
